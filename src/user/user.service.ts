@@ -10,6 +10,8 @@ export class UserService {
 
     async createUser(user:CreateUserDTO):Promise<User>{
         const newUser = new this.userModel(user);
-        return newUser.save();
+        await newUser.save();
+        const {password,...responseUser} = newUser.toObject();
+        return responseUser;
     }
 }
