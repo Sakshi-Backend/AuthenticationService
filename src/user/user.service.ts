@@ -14,4 +14,9 @@ export class UserService {
         const {password,...responseUser} = newUser.toObject();
         return responseUser;
     }
+
+    async getUser(email:string):Promise<User>{
+        const user = await this.userModel.findOne({email}).select("+password");
+        return user.toObject();
+    }
 }
