@@ -7,6 +7,11 @@ import { UserService } from './user.service';
 export class UserController {
     constructor(private readonly userService:UserService){}
     
+    /**
+     * API to create user
+     * @param user 
+     * @returns user
+     */
     @Public()
     @Post()
     async createUser(@Body() user:CreateUserDTO){
